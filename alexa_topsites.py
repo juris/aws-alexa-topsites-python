@@ -35,7 +35,8 @@ def gen_url(access_key_id, secret_access_key, country, start, count):
     url = 'http://%s/?%s' % (service_host, query_str)
     return url
 
-def get_alexa_sites(http, url):
+def get_alexa_sites(url):
+#    http = httplib2.Http()
     resp, content = http.request(url, 'GET')
     xml = etree.fromstring(content)
     namespace_map = {'aws' : 'http://ats.amazonaws.com/doc/2005-11-21'}
@@ -70,4 +71,4 @@ if __name__ == '__main__':
 
     for i in xrange(start, count, step):
         url = gen_url(access_key_id, secret_access_key, country_code, start, step)
-        print '\n'.join(get_alexa_sites(http, url))
+        print '\n'.join(get_alexa_sites(url))
