@@ -70,5 +70,5 @@ if __name__ == '__main__':
     step  = 100 if count > 100 else count
 
     for i in xrange(start, count, step):
-        url = gen_url(access_key_id, secret_access_key, country_code, start, step)
+        url = gen_url(access_key_id, secret_access_key, country_code, i, step)
         print '\n'.join(get_alexa_sites(url))
